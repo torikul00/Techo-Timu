@@ -1,0 +1,25 @@
+* {
+  font-family: "Nunito", sans-serif;
+}
+.blog-container p {
+  font-size: 18px;
+  margin: 10px 0px;
+}
+.main-container {
+  margin: 50px 200px;
+  display: flex;
+}
+.blog-container {
+  padding: 0px 20px;
+}
+.img {
+  padding: 0px 20px;
+}
+.img img {
+  width: 300px;
+}
+.read-more {
+  font-weight: bold;
+  cursor: pointer;
+  color: #22577e;
+}

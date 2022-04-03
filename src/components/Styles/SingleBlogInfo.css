@@ -1,0 +1,48 @@
+
+.title{
+    margin-top: 150px;
+    text-align: center;
+}
+.blog-info{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.blog-info button{
+    background-color: #22577e;
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 5px;
+    margin: 20px 0px;
+    cursor: pointer;
+}
+.info{
+    margin: 0px 200px;
+}
+.blog{
+    font-size: 18px;
+}
+.cover-container{
+    width: 100%;
+    height: 150px;
+    background-color: #22577e;
+    position: relative;
+}
+.profile{
+    width: 300px;
+   height: auto;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%,-25%);
+    
+   
+   
+
+}
+.profile img {
+    width: 100%;
+    border: 2px solid #22577e;
+    padding: 5px;
+}

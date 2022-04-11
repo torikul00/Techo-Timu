@@ -6,6 +6,7 @@ import Login from "./components/Login/Login";
 import About from "./components/About/About";
 import SingleBlogInfo from "./components/SingleBLogInfo/SingleBlogInfo";
 import { createContext, useState } from "react";
+import SignUp from "./components/SignUp/SignUp";
 
 export const LoadBlog = createContext();
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/about" element={<About />} />
+          <Route path="signup" element={<SignUp />} />
           <Route path="/blog/:blogID" element={<SingleBlogInfo />} />
         </Routes>
       </LoadBlog.Provider>
@@ -26,3 +28,4 @@ function App() {
 }
 
 export default App;
+ 

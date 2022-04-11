@@ -17,7 +17,7 @@
 .link {
   text-decoration: none;
   color: white;
-  font-weight: 600;
+  
   margin: 0px 15px;
   font-weight: 400;
 }
@@ -26,8 +26,18 @@
   color: white;
   border-bottom: 2px solid white;
   transform: scale(1.1);
-  font-weight: 600;
+
   margin: 0px 15px;
   transition: 0.1s;
   font-weight: 500;
+}
+.logout-button{
+  color: white;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  margin: 0px 15px;
+  font-weight: 500;
+  font-size: 16px;
+
 }

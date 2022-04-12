@@ -9,7 +9,6 @@ const SignUp = () => {
     const [email, setEmail] = useState({ value: '', error: '' })
     const [password, setPassword] = useState({ value: '', error: '' })
     const [confirmPassword, setConfirmPassword] = useState({ value: '', error: '' })
-    const [error, setError] = useState('')
     const googleProvider = new GoogleAuthProvider(auth)
     const navigate = useNavigate()
     const SignInGoogle = () => {
@@ -85,17 +84,16 @@ const SignUp = () => {
                         {
                             confirmPassword?.error && <small style={{ color: 'red' }}>{confirmPassword.error}</small>
                         }
-                        {
-                            error && <small>{error}</small>
-                        }
+                        
 
                         <button type='submit' className='button'>Sign Up</button>
                         <p className='signup-link'>Already Registered ? <Link to="/login">Login </Link></p>
 
                     </div>
                     <hr />
+                    <button onClick={SignInGoogle} className='button'>Continue With Google </button>
                 </form>
-                <button onClick={SignInGoogle} className='button'>Continue With Google </button>
+               
             </div>
         </div>
     );

@@ -1,5 +1,6 @@
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { NavLink, useNavigate } from 'react-router-dom';
 import auth from '../firebase.init';
 import '../Styles/Navbar.css'
@@ -20,7 +21,8 @@ const Navbar = () => {
     }, [])
     const handleLogout = () => {
         signOut(auth)
-        .then()
+            .then(() => toast.success('Logout seccesful'))
+        .catch(()=>toast.error('Something went wrong'))
     }
 
     return (

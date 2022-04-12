@@ -46,7 +46,7 @@ form label {
 .button{
     padding: 10px 30px ;
     border: none;
-    background-color:#22577e ;
+    background: linear-gradient(90deg, rgba(34,87,126,1) 0%, rgba(22,57,82,1) 47%);
     width: 100%;
     color: white;
     border: none;

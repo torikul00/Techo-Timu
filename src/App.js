@@ -7,6 +7,7 @@ import About from "./components/About/About";
 import SingleBlogInfo from "./components/SingleBLogInfo/SingleBlogInfo";
 import { createContext, useState } from "react";
 import SignUp from "./components/SignUp/SignUp";
+import  { Toaster } from 'react-hot-toast';
 
 export const LoadBlog = createContext();
 function App() {
@@ -14,6 +15,7 @@ function App() {
   return (
     <div>
       <Navbar />
+      <Toaster />
       <LoadBlog.Provider value={[blogs, setBLogs]}>
         <Routes>
           <Route path="/" element={<Home />} />

@@ -33,9 +33,9 @@ const Navbar = () => {
             
                     <NavLink className={({ isActive }) => isActive ? 'activeLink' : 'link'} to='/about' >About</NavLink>
               
-                 { user?.uid ? <button className='logout-button' onClick={handleLogout}>Logout  </button> 
+                 { user?.uid ? <button className='nav-button' onClick={handleLogout}>Logout  </button> 
                     :
-                    <NavLink className={({ isActive }) => isActive ? 'activeLink' : 'link'} to='/login' >Log in </NavLink>}
+                    <button onClick={()=>navigate('/login')} className='nav-button' >Log in </button>}
                
             </div>
         </div>

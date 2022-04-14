@@ -8,6 +8,7 @@ import SingleBlogInfo from "./components/SingleBLogInfo/SingleBlogInfo";
 import { createContext, useState } from "react";
 import SignUp from "./components/SignUp/SignUp";
 import  { Toaster } from 'react-hot-toast';
+import Footer from "./components/Footer/Footer";
 
 export const LoadBlog = createContext();
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/blog/:blogID" element={<SingleBlogInfo />} />
         </Routes>
       </LoadBlog.Provider>
+      <Footer />
     </div>
   );
 }

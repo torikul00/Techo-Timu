@@ -1,24 +1,19 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import auth from '../firebase.init';
 import './SignUp.css'
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import toast from 'react-hot-toast';
+import { FcGoogle } from 'react-icons/fc';
+import { BsFacebook,BsGithub } from 'react-icons/bs';
+import useSocialLogin from '../hooks/useSocialLogin';
 const SignUp = () => {
-    const [user, setUser] = useState({})
+    const {signInGoogle,signInFacebook,signGithub} = useSocialLogin()
     const [email, setEmail] = useState({ value: '', error: '' })
     const [password, setPassword] = useState({ value: '', error: '' })
     const [confirmPassword, setConfirmPassword] = useState({ value: '', error: '' })
-    const googleProvider = new GoogleAuthProvider(auth)
-    const navigate = useNavigate()
-    const SignInGoogle = () => {
-        signInWithPopup(auth, googleProvider)
-            .then(result => {
-                setUser(result.user)
-                navigate('/')
-            })
-            .catch(err => console.log(err))
-    }
+
+   
     const handleSignUp = (event) => {
         event.preventDefault()
         if (email.value === '') {
@@ -33,7 +28,7 @@ const SignUp = () => {
                 .then(() => toast.success('Thanks for SignUp', { id: "test", duration: 3000, style: { backgroundColor: 'black', color: 'white', } }))
 
                 // error
-                .catch(() => toast.error('User Already Registered', { id: "test", duration: 3000, style: { backgroundColor: 'black', color: 'white', } }))
+                .catch(() => toast.error('Email Already Registered', { id: "test", duration: 3000, style: { backgroundColor: 'black', color: 'white', } }))
         }
     }
     const handleEmail = (email) => {
@@ -66,19 +61,19 @@ const SignUp = () => {
                     <h1 className='form-title'>Please Sign Up</h1>
                     <div className="inputs">
 
-                        <label htmlFor="email">Email </label>
+                     
                         {
                             email?.error && <small style={{ color: 'red' }}>{email.error}</small>
                         }
                         <input onBlur={(e) => handleEmail(e.target.value)} name='email' type="email" placeholder='Email' />
 
-                        <label htmlFor="email">Password </label>
+                      
                         {
                             password?.error && <small style={{ color: 'red' }}>{password.error}</small>
                         }
                         <input onBlur={(e) => handlePassword(e.target.value)} name='password' type="password" placeholder='Password' />
 
-                        <label htmlFor="email">Confirm Password </label>
+                      
 
                         <input onBlur={(e) => handleConfirmPassword(e.target.value)} name='confirmPassword' type="password" placeholder='Confirm Password' /> <br />
                         {
@@ -90,9 +85,19 @@ const SignUp = () => {
                         <p className='signup-link'>Already Registered ? <Link to="/login">Login </Link></p>
 
                     </div>
-                    <hr />
-                    <button onClick={SignInGoogle} className='button'>Continue With Google </button>
+                    <div className="horizontal">
+                        <div className='line' />
+                        <p>OR</p>
+                        <div className='line' />
+
+                    </div>
+                    <div className="icons">
+                        <FcGoogle className='google-icon' onClick={signInGoogle} />
+                        <BsFacebook onClick={signInFacebook} className='facebook-icon' />
+                        <BsGithub onClick={signGithub} className='github-icon'/>
+                  </div>
                 </form>
+               
                
             </div>
         </div>

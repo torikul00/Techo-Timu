@@ -4,12 +4,10 @@ import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import auth from '../firebase.init';
 import './Login.css'
+import { FcGoogle } from 'react-icons/fc';
+import { BsFacebook, BsGithub } from 'react-icons/bs';
 
 const Login = () => {
-   
-    const [error, setError] = useState('')
-   
-
 
     const googleProvider = new GoogleAuthProvider(auth)
     const SignInGoogle = () => {
@@ -25,7 +23,7 @@ const Login = () => {
 
         signInWithEmailAndPassword(auth, email, password)
             .then(() => toast.success('Login succesful'))
-            .catch(() => toast.error('Password is incorrect'))
+            .catch(() => toast.error('Password or Email incorrect'))
     }
     const handleEmail = (email) => {
         console.log(email)
@@ -36,23 +34,30 @@ const Login = () => {
             <form onSubmit={handleSubmit}>
                 <h1 className='form-title'>Please Login</h1>
                 <div className="inputs">
-
-                    <label htmlFor="email">Email </label>
                     <input onBlur={(e) => handleEmail(e.target.value)} type="email" placeholder='Email' name='email' />
 
-                    <label htmlFor="email">Password </label>
-                    <input type="password" placeholder='Password' name='password' /> <br />
-                    <p style={{ color: 'red' }}>{error ? error : ''}</p>
+                    <input type="password" placeholder='Password' /> <br />
+
                     <button type='submit' className='button'>Login</button>
                     <p className='signup-link'>New User ? <Link to="/signup">Sign Up </Link></p>
 
                 </div>
 
-                <hr />
+                <div className="horizontal">
+                    <div className='line' />
+                    <p>OR</p>
+                    <div className='line' />
 
-                <button onClick={SignInGoogle} className='button'>Continue With Google </button>
+                </div>
+                <div className="icons">
+                    <FcGoogle onClick={SignInGoogle} className='google-icon' />
+                    <BsFacebook className='facebook-icon' />
+                    <BsGithub className='github-icon' />
+                </div>
+
 
             </form>
+
         </div>
     );
 };

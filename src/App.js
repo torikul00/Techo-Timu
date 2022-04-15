@@ -9,6 +9,7 @@ import { createContext, useState } from "react";
 import SignUp from "./components/SignUp/SignUp";
 import  { Toaster } from 'react-hot-toast';
 import Footer from "./components/Footer/Footer";
+import ResetPassword from "./components/Login/ResetPassword";
 
 export const LoadBlog = createContext();
 function App() {
@@ -24,9 +25,10 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="/blog/:blogID" element={<SingleBlogInfo />} />
+          <Route path="resetPassword" element={<ResetPassword />} />
         </Routes>
       </LoadBlog.Provider>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

@@ -17,14 +17,13 @@ form{
    
 
 }
-form input {
+.inputs input:not([type=checkbox]) {
     width: 100%;
     padding: 6px 6px;
     margin: 10px 0px;
     border: 1.5px solid #22577e;
     border-radius: 5px;
 }
-
 
 form label {
     display: block;
@@ -54,4 +53,48 @@ form label {
     margin-top: 15px;
     cursor: pointer;
     font-size: 16px;
+}
+.forgot-password{
+    color: #22577e;
+    letter-spacing: 1px;
+    margin: 10px 0px;
+    cursor: pointer;
+}
+/* forgot css  */
+.forgot-pass-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 400px;
+}
+.forgot-input{
+    width: 300px;
+    height: 300px;
+    background-color: #22577e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px ;
+    color: white;
+    border-radius: 5px;
+    flex-direction: column;
+}
+.forgot-input input {
+    display: block;
+    padding: 5px 10px ;
+    width: 80%;
+
+}
+.forgot-input button{
+    padding: 6px 20px ;
+    border: none;
+    width: 60%;
+    border: none;
+    border-radius: 5px;
+    margin-top: 15px;
+    color: #22577e;
+    letter-spacing: 1px;
+    cursor: pointer;
+    font-size: 13px;
 }

@@ -35,3 +35,22 @@
     cursor: pointer;
 
 }
+#term{
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.term-container{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin: 15px 0px;
+}
+
+.none-checked{
+    color: red;
+}
+.checked{
+    color: #22577e;
+}

@@ -13,19 +13,19 @@ const useSocialLogin = () => {
     const signInGoogle = () => {
         signInWithPopup(auth, googleProvider)
             .then(() => toast.success('Thanks for SignUp '))
-            .catch((err) => console.log(err))
+            .catch(() => toast.error('Something went wrong'))
     }
 // Github
     const signGithub = () => {
         signInWithPopup(auth, githubProvider)
             .then(() => toast.success('Thanks for SignUp '))
-            .catch((err) => console.log(err))
+            .catch(() => toast.error('Something went wrong'))
     }
 // Facebook 
     const signInFacebook = () => {
         signInWithPopup(auth, facebookProvider)
         .then(() => toast.success('Thanks for SignUp '))
-        .catch((err) => console.log(err))
+        .catch(() => toast.error('Something went wrong'))
     }
     
     return {

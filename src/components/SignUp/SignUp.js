@@ -5,15 +5,17 @@ import './SignUp.css'
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
-import { BsFacebook,BsGithub } from 'react-icons/bs';
+import { BsFacebook, BsGithub } from 'react-icons/bs';
 import useSocialLogin from '../hooks/useSocialLogin';
 const SignUp = () => {
-    const {signInGoogle,signInFacebook,signGithub} = useSocialLogin()
+    const { signInGoogle, signInFacebook, signGithub } = useSocialLogin()
     const [email, setEmail] = useState({ value: '', error: '' })
     const [password, setPassword] = useState({ value: '', error: '' })
     const [confirmPassword, setConfirmPassword] = useState({ value: '', error: '' })
+    const [agree, setAgree] = useState(false)
 
-   
+
+
     const handleSignUp = (event) => {
         event.preventDefault()
         if (email.value === '') {
@@ -24,11 +26,17 @@ const SignUp = () => {
         }
         if (email.value && password.value && confirmPassword.value) {
             // signup new user
-            createUserWithEmailAndPassword(auth, email.value, password.value)
+            if (agree) {
+                  createUserWithEmailAndPassword(auth, email.value, password.value)
                 .then(() => toast.success('Thanks for SignUp', { id: "test", duration: 3000, style: { backgroundColor: 'black', color: 'white', } }))
 
                 // error
                 .catch(() => toast.error('Email Already Registered', { id: "test", duration: 3000, style: { backgroundColor: 'black', color: 'white', } }))
+            }
+            else {
+                toast.error('Please accept our term and condtion')
+            }
+          
         }
     }
     const handleEmail = (email) => {
@@ -61,27 +69,31 @@ const SignUp = () => {
                     <h1 className='form-title'>Please Sign Up</h1>
                     <div className="inputs">
 
-                     
+
                         {
                             email?.error && <small style={{ color: 'red' }}>{email.error}</small>
                         }
                         <input onBlur={(e) => handleEmail(e.target.value)} name='email' type="email" placeholder='Email' />
 
-                      
+
                         {
                             password?.error && <small style={{ color: 'red' }}>{password.error}</small>
                         }
                         <input onBlur={(e) => handlePassword(e.target.value)} name='password' type="password" placeholder='Password' />
 
-                      
+
 
                         <input onBlur={(e) => handleConfirmPassword(e.target.value)} name='confirmPassword' type="password" placeholder='Confirm Password' /> <br />
                         {
                             confirmPassword?.error && <small style={{ color: 'red' }}>{confirmPassword.error}</small>
                         }
-                        
-
-                        <button type='submit' className='button'>Sign Up</button>
+                        <div className='term-container'>
+                            <input onClick={()=>setAgree(!agree)} type="checkbox" name="term" id="term" />
+                            <span className={agree ? 'checked' : 'none-checked'}> Accept term and conditon</span>
+                        </div>
+                       
+                    
+                        <input  type='submit' className='button' value='Sign Up'/>
                         <p className='signup-link'>Already Registered ? <Link to="/login">Login </Link></p>
 
                     </div>
@@ -94,11 +106,11 @@ const SignUp = () => {
                     <div className="icons">
                         <FcGoogle className='google-icon' onClick={signInGoogle} />
                         <BsFacebook onClick={signInFacebook} className='facebook-icon' />
-                        <BsGithub onClick={signGithub} className='github-icon'/>
-                  </div>
+                        <BsGithub onClick={signGithub} className='github-icon' />
+                    </div>
                 </form>
-               
-               
+
+
             </div>
         </div>
     );
